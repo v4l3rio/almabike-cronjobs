@@ -1,0 +1,28 @@
+version: '3.9'
+
+services:
+  mysql:
+    image: mysql:8
+    platform: linux/x86_64
+    ports:
+      - 3306:3306
+    volumes:
+      - almabike_db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_PASSWORD=almabike
+      - MYSQL_USER=almabike
+      - MYSQL_DATABASE=almabike_db
+  phpmyadmin:
+    hostname: almabike_phpmyadmin
+    depends_on:
+      - mysql
+    image: phpmyadmin/phpmyadmin:5.1
+    restart: always
+    ports:
+      - '8080:80'
+    environment:
+      PMA_HOST : mysql
+
+volumes:
+  almabike_db:
