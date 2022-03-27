@@ -47,7 +47,7 @@ async function main() {
   con.connect(function (err) {
     if (err) throw err;
     console.log("Connected!");
-    var sql = "INSERT INTO `device`(`id`, `uuid`, `name`, `description`, `state`, `last_reading_at`, `exposure`, `latitude`, `longitude`, `city`) VALUES ?";
+    var sql = "INSERT INTO `devices`(`id`, `uuid`, `name`, `description`, `state`, `last_reading_at`, `exposure`, `latitude`, `longitude`, `city`) VALUES ?";
     con.query(sql, [values], function (err, result) {
       if (err) throw err;
       console.log("Number of records inserted: " + result.affectedRows);
