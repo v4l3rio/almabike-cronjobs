@@ -1,15 +1,18 @@
-# Almabike - Backend
+# Almabike - Cronjobs
 
-Backend for the Almabike Project, script that allows you to receive data from the API and then insert them into the database
+Cronjobs for the Almabike Project
 
-## Installation
+- Database + Phpmyadmin with Docker (Work!)
+- Pull data from API (In progress)
+
+## Installation DB
 
 ```bash
 make start
 ```
 
-## Usage
+## Usage Of Pull Data script
 
 ```bash
-node pull_data.js
+null
 ```
