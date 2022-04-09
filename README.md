@@ -14,5 +14,5 @@ make start
 ## Usage Of Pull Data script
 
 ```bash
-null
+npm run start
 ```
