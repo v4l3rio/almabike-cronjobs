@@ -15,19 +15,15 @@ export class ApiService{
             },
           );
 
-          console.log(data.device_id);
+          return [data, status] as const;
 
-          // 👇️ "response status is: 200"
-          console.log('response status is: ', status);
-
-          return data;
         } catch (error) {
           if (axios.isAxiosError(error)) {
             console.log('error message: ', error.message);
-            return error.message;
+            return [null, 400] as const;
           } else {
             console.log('unexpected error: ', error);
-            return 'An unexpected error occurred';
+            return [null, 400] as const;
           }
         }
       }
