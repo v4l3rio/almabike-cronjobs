@@ -11,8 +11,11 @@ export class DatabaseManager{
     }
 
     async insertInDB(reading:Readings){
-        console.log("Inserting a new user into the database...")
-        await AppDataSource.manager.save(reading)
-        console.log("Saved a new user with id: " + reading.id)
+        try{
+            await AppDataSource.manager.save(reading)
+        }
+        catch(err){
+            // console.log("ERRORE NEL DATABASE MANAGER - INSERIMENTO");
+        }
     }
 }

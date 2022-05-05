@@ -10,7 +10,7 @@ export const AppDataSource = new DataSource({
     password: "almabike",
     database: "almabike_db",
     synchronize: false,
-    logging: true,
+    logging: false,
     entities: [Readings],
     subscribers: [],
     migrations: [],

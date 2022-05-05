@@ -3,11 +3,11 @@ import axios from 'axios'
 
 export class ApiService{
 
-    async getDataFromAPI() {
+    async getDataFromAPI(deviceID: string, sensorID:string ,from: string, to: string) {
         try {
 
           const { data, status } = await axios.get<ApiResponse>(
-            'https://api.smartcitizen.me/v0/devices/14474/readings?all_intervals=true&from=2022-01-02&rollup=60s&sensor_id=55&to=2022-03-15',
+            'https://api.smartcitizen.me/v0/devices/'+deviceID+'/readings?all_intervals=true&from='+from+'&rollup=60s&sensor_id='+sensorID+'&to='+to,
             {
               headers: {
                 Accept: 'application/json',
