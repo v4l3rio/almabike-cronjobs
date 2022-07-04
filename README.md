@@ -1,18 +1,13 @@
-# Almabike - Cronjobs
+# Almabike - Docker
 
-Cronjobs for the Almabike Project
+Almabike Docker
 
-- Database + Phpmyadmin with Docker (Work!)
-- Pull data from API (In progress)
+- Database
+- Phpmyadmin
+- LocalStack
 
 ## Installation DB
 
 ```bash
 make start
-```
-
-## Usage Of Pull Data script
-
-```bash
-npm run start
 ```

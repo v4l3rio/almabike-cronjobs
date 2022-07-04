@@ -23,6 +23,14 @@ services:
       - '8080:80'
     environment:
       PMA_HOST : mysql
+  localstack: 
+    image: localstack/localstack:latest
+    environment: 
+      - DEFAULT_REGION=ei-west-1
+      - EDGE_PORT=4566
+      - SERVICES=s3,lambda,logs
+    ports: 
+      - '4566-4583:4566-4583'
 
 volumes:
   almabike_db:
