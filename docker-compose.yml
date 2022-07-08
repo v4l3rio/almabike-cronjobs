@@ -1,9 +1,15 @@
 version: '3.9'
 
+networks:
+  my_network:
+    driver: bridge
+
 services:
   mysql:
     image: mysql:8
     platform: linux/x86_64
+    expose:
+      - 3306
     ports:
       - 3306:3306
     volumes:
@@ -13,6 +19,8 @@ services:
       - MYSQL_PASSWORD=almabike
       - MYSQL_USER=almabike
       - MYSQL_DATABASE=almabike_db
+    networks:
+      - my_network
   phpmyadmin:
     hostname: almabike_phpmyadmin
     depends_on:
@@ -23,15 +31,22 @@ services:
       - '8080:80'
     environment:
       PMA_HOST : mysql
-  localstack: 
-    image: localstack/localstack:latest
-    environment: 
-      - DEFAULT_REGION=eu-west-1
-      - EDGE_PORT=4566
-      - SERVICES=s3,lambda,logs
-    ports: 
-      - '4566-4583:4566-4583'
+  api:
+    hostname: almabike_api
+    depends_on:
+      - mysql
+    image: v4l3rio/api
+    ports:
+      - 3000:3000
+    expose:
+      - 3000
+    networks:
+      - my_network
+
 
 volumes:
   almabike_db:
     external: false
+
+
+
